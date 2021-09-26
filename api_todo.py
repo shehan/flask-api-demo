@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restful import reqparse, abort, fields, marshal_with, marshal, Api, Resource
+from flask_restful import reqparse, abort, fields, marshal_with, marshal, Api, Resource, request
 
 app = Flask(__name__)
 api = Api(app)
@@ -36,6 +36,12 @@ class TodoList(Resource):
     @marshal_with(fields)
     def get(self):
         return TODOS
+
+    def put(self):
+        args_id = request.args.get('id', type=int)
+        args_task = request.args.get('task')
+        TODOS[args_id] = {'task': args_task}
+        return marshal(TODOS[args_id], fields), 201
 
     def post(self):
         parser = reqparse.RequestParser()
