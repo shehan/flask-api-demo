@@ -16,7 +16,7 @@ fields = {
 }
 
 
-# show a single todo item and lets you delete them
+# show a single item and lets you delete it
 class Todo(Resource):
     @marshal_with(fields)
     def get(self, todo_id):
@@ -31,7 +31,7 @@ class Todo(Resource):
         return "", 204
 
 
-# shows a list of all todos, and lets you POST to add new tasks
+# shows a list of all todos, POST to add new tasks, and PUT to edit a task
 class TodoList(Resource):
     @marshal_with(fields)
     def get(self):

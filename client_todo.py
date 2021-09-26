@@ -20,7 +20,7 @@ print(response.json())
 print('-----------------------------')
 
 print('[POST] Create A TODO')
-response = requests.post("http://127.0.0.1:5000/todos",json={'task':'buy milk'})
+response = requests.post("http://127.0.0.1:5000/todos", json={'task': 'buy milk'})
 print(response.status_code)
 print(response.json())
 
@@ -35,7 +35,6 @@ print('[DELETE] Remove A TODO (id=2)')
 response = requests.delete("http://127.0.0.1:5000/todos/2")
 print(response.status_code)
 
-
 print('[GET] All TODOs')
 response = requests.get("http://127.0.0.1:5000/todos")
 print(response.status_code)
@@ -46,7 +45,6 @@ print('-----------------------------')
 print('[PUT] Update A TODO (id=2)')
 response = requests.put("http://127.0.0.1:5000/todos?id=2&task=set alarm")
 print(response.status_code)
-
 
 print('[GET] All TODOs')
 response = requests.get("http://127.0.0.1:5000/todos")
