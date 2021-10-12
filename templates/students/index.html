@@ -1,0 +1,13 @@
+{% extends "students/base.html" %}
+
+<h1>Hello {{ user }}!</h1>
+<p>Welcome to the world of Flask!</p>
+{% block container %}
+<div>
+    {% for link in links %}
+    <h2>
+        <a href="{{link['link']}}" target='_blank'>{{link['text']}}</a>
+    </h2>
+</div>
+{% endfor %}
+{% endblock %}

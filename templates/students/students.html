@@ -1,0 +1,13 @@
+{% block container %}
+<div>
+    {% for student in students %}
+    <p>
+    <ul>
+        <li><b>Id:</b> {{student['id']}}</li>
+        <li><b>Name:</b> {{student['first_name']}} {{student['last_name']}}</li>
+        <li><b>DoB:</b> {{student['DoB']}}</li>
+    </ul>
+    </p>
+</div>
+{% endfor %}
+{% endblock %}

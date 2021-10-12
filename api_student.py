@@ -1,10 +1,26 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful import Api
-
+import json
 from student import Student, StudentList
 
 app = Flask(__name__)
 api = Api(app)
+
+@app.route("/index.html")
+def api_student_template():
+       links = [
+              {'link': '/students.html', 'text': 'View All Students'},
+              {'link': '/api/find-student', 'text': 'Find A Student'},
+              {'link': '/api/create-student', 'text': 'Create New Student'}
+       ]
+       return render_template('students/index.html', user='John Smith', links=links)
+
+
+@app.route("/students.html")
+def api_students_template():
+       students_class = StudentList()
+       students = students_class.get()
+       return render_template('students/students.html', students=json.loads(students.data.decode('utf-8')))
 
 
 @app.route("/")
